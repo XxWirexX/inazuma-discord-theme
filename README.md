@@ -1,53 +1,58 @@
-# Inazuma Discord Theme
+# ⚡ Inazuma Eleven — thème Discord
 
-Programme sans interface web (bot, worker, tâche planifiée…), déployé sur le VPS.
+Thème Discord aux couleurs de Raimon : bleu nuit, jaune éclair et orange bandeau,
+avec un fond de terrain de foot au coucher du soleil traversé par des éclairs.
 
-Pour l'instant, `docker-compose.yml` lance un conteneur de démo. Remplace-le par ton programme :
-chaque push sur `main` lance `~/infra/deploy/deploy.sh inazuma-discord-theme` sur le serveur
-(`git pull`, `docker compose build`, `docker compose up -d`), quel que soit le contenu du compose.
+![Fond du thème](assets/background.jpg)
 
-## Exemples de Dockerfile
+Compatible **Vencord**, **Equicord** et **BetterDiscord**, ancienne et nouvelle interface de Discord.
 
-**Node.js** (bot Discord, worker…)
+## Installation
 
-```dockerfile
-FROM node:22-alpine
-WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci --omit=dev
-COPY . .
-USER node
-CMD ["node", "index.js"]
+### Vencord / Equicord (recommandé)
+
+1. Paramètres → **Themes** → onglet **Online Themes**
+2. Colle ce lien, puis active-le :
+
+```
+https://cdn.jsdelivr.net/gh/XxWirexX/inazuma-discord-theme@main/inazuma.theme.css
 ```
 
-**Python**
+Le thème se met à jour tout seul à chaque push (jsDelivr peut garder l'ancienne version en cache jusqu'à 12 h).
 
-```dockerfile
-FROM python:3.13-slim
-WORKDIR /app
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
-USER nobody
-CMD ["python", "main.py"]
+### BetterDiscord
+
+Télécharge [`inazuma.theme.css`](inazuma.theme.css) et mets-le dans le dossier des thèmes
+(Paramètres → Thèmes → *Ouvrir le dossier des thèmes*).
+
+### QuickCSS (sans installer de thème)
+
+```css
+@import url("https://cdn.jsdelivr.net/gh/XxWirexX/inazuma-discord-theme@main/inazuma.theme.css");
 ```
 
-Puis dans `docker-compose.yml`, remplace `image:` et `command:` par `build: .`
+## Personnaliser
 
-## À garder
+Ajoute ces lignes dans ton QuickCSS (ou modifie le bloc `:root` en haut du fichier) :
 
-- `container_name: inazuma-discord-theme`, pour retrouver le conteneur facilement (`docker logs inazuma-discord-theme`)
-- `restart: unless-stopped`, pour qu'il redémarre après un plantage ou un reboot du serveur
-- les secrets dans le `.env` du serveur, jamais dans le repo
-
-## Une base de données ?
-
-Ajoute un service `db` comme dans le modèle Nuxt + Postgres (`vps-infra/templates/nuxt-postgres`),
-sans lui mettre de `ports:`. Et si tu veux des migrations au déploiement, un service `migrate`
-dans le profil `tools` est lancé automatiquement par `deploy.sh`.
-
-## Logs
-
-```bash
-docker logs -f inazuma-discord-theme
+```css
+:root {
+  --inazuma-bg: url("https://ton-image.jpg");  /* ton propre fond d'écran */
+  --inazuma-dim: 0.35;    /* assombrissement du fond, 0 → 1 */
+  --inazuma-panel: 0.62;  /* opacité des panneaux, plus bas = plus de fond visible */
+  --inazuma-blur: 6px;    /* flou derrière les panneaux, 0px si ton PC rame */
+}
 ```
+
+Les couleurs (`--inazuma-yellow`, `--inazuma-orange`, `--inazuma-blue`…) sont au format `R, G, B`.
+
+## Fond d'écran
+
+`assets/background.svg` est la source (généré, original), `assets/background.jpg` le rendu 1920×1080 utilisé par le thème.
+
+---
+
+Thème fan non officiel, sans lien avec Level-5. Inazuma Eleven est une marque de Level-5 Inc.
+
+> Le repo vient du modèle « programme VPS » : le `docker-compose.yml` et le workflow de déploiement
+> sont toujours là et lancent le conteneur de démo à chaque push. Ils ne servent pas au thème.

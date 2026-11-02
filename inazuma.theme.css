@@ -1,0 +1,256 @@
+/**
+ * @name Inazuma Eleven
+ * @description Thème Discord aux couleurs Raimon : bleu nuit, jaune éclair, orange bandeau. Fond terrain au coucher du soleil.
+ * @author XxWirexX
+ * @version 1.0.0
+ * @source https://github.com/XxWirexX/inazuma-discord-theme
+ * @website https://github.com/XxWirexX/inazuma-discord-theme
+ */
+
+/* ============================================================
+   RÉGLAGES — change ces valeurs pour personnaliser le thème
+   ============================================================ */
+:root {
+  /* Fond d'écran : remplace l'URL par n'importe quelle image (https://...) */
+  --inazuma-bg: url("https://cdn.jsdelivr.net/gh/XxWirexX/inazuma-discord-theme@main/assets/background.jpg");
+  --inazuma-bg-position: center;
+
+  /* Assombrissement du fond (0 = image brute, 1 = noir) */
+  --inazuma-dim: 0.35;
+  /* Flou derrière les panneaux (0px pour désactiver, plus léger pour le PC) */
+  --inazuma-blur: 6px;
+  /* Opacité des panneaux (plus bas = on voit plus le fond) */
+  --inazuma-panel: 0.62;
+
+  /* Palette Raimon */
+  --inazuma-navy: 10, 20, 52;        /* bleu nuit */
+  --inazuma-blue: 22, 48, 107;       /* bleu maillot */
+  --inazuma-blue-light: 64, 120, 230;
+  --inazuma-yellow: 255, 212, 0;     /* jaune éclair */
+  --inazuma-orange: 255, 138, 0;     /* orange bandeau */
+  --inazuma-cream: 255, 247, 222;
+
+  --inazuma-radius: 10px;
+}
+
+/* ============================================================
+   VARIABLES DISCORD (ancienne + nouvelle interface)
+   ============================================================ */
+.theme-dark,
+.theme-darker,
+.theme-midnight,
+.visual-refresh.theme-dark,
+.visual-refresh.theme-darker,
+.visual-refresh.theme-midnight {
+  /* Fonds — semi-transparents pour laisser passer le wallpaper */
+  --background-primary: rgba(var(--inazuma-navy), calc(var(--inazuma-panel) - 0.12));
+  --background-secondary: rgba(var(--inazuma-navy), var(--inazuma-panel));
+  --background-secondary-alt: rgba(var(--inazuma-navy), calc(var(--inazuma-panel) + 0.15));
+  --background-tertiary: rgba(var(--inazuma-navy), calc(var(--inazuma-panel) + 0.1));
+  --background-floating: rgb(13, 25, 62);
+  --background-nested-floating: rgb(17, 32, 78);
+  --background-accent: rgba(var(--inazuma-blue-light), 0.35);
+  --background-mobile-primary: rgb(var(--inazuma-navy));
+  --background-mobile-secondary: rgb(var(--inazuma-navy));
+  --modal-background: rgb(13, 25, 62);
+  --modal-footer-background: rgb(10, 20, 52);
+  --deprecated-card-bg: rgba(var(--inazuma-blue), 0.45);
+  --deprecated-card-editable-bg: rgba(var(--inazuma-blue), 0.35);
+  --channeltextarea-background: rgba(var(--inazuma-blue), 0.55);
+  --input-background: rgba(5, 10, 30, 0.6);
+  --home-background: transparent;
+  --chat-background: transparent;
+  --chat-background-default: transparent;
+
+  /* Nouvelle interface (visual refresh) */
+  --background-base-low: rgba(var(--inazuma-navy), var(--inazuma-panel));
+  --background-base-lower: rgba(var(--inazuma-navy), calc(var(--inazuma-panel) - 0.12));
+  --background-base-lowest: rgba(var(--inazuma-navy), calc(var(--inazuma-panel) + 0.1));
+  --background-surface-high: rgb(15, 29, 70);
+  --background-surface-higher: rgb(18, 35, 82);
+  --background-surface-highest: rgb(22, 42, 96);
+  --bg-base-primary: rgba(var(--inazuma-navy), calc(var(--inazuma-panel) - 0.12));
+  --bg-base-secondary: rgba(var(--inazuma-navy), var(--inazuma-panel));
+  --bg-base-tertiary: rgba(var(--inazuma-navy), calc(var(--inazuma-panel) + 0.1));
+  --bg-surface-raised: rgb(15, 29, 70);
+  --bg-surface-overlay: rgb(13, 25, 62);
+  --bg-overlay-chat: transparent;
+  --bg-overlay-app-frame: rgba(var(--inazuma-navy), 0.4);
+  --bg-mod-faint: rgba(var(--inazuma-yellow), 0.05);
+  --bg-mod-subtle: rgba(var(--inazuma-yellow), 0.08);
+  --bg-mod-strong: rgba(var(--inazuma-yellow), 0.14);
+  --app-frame-background: transparent;
+  --border-subtle: rgba(var(--inazuma-yellow), 0.12);
+  --border-faint: rgba(var(--inazuma-yellow), 0.07);
+
+  /* Survol / sélection */
+  --background-modifier-hover: rgba(var(--inazuma-yellow), 0.07);
+  --background-modifier-active: rgba(var(--inazuma-yellow), 0.12);
+  --background-modifier-selected: rgba(var(--inazuma-orange), 0.22);
+  --background-modifier-accent: rgba(var(--inazuma-yellow), 0.14);
+  --background-message-hover: rgba(var(--inazuma-yellow), 0.04);
+  --background-mentioned: rgba(var(--inazuma-orange), 0.12);
+  --background-mentioned-hover: rgba(var(--inazuma-orange), 0.18);
+  --info-warning-foreground: rgb(var(--inazuma-orange));
+
+  /* Texte */
+  --text-normal: rgb(232, 236, 250);
+  --text-default: rgb(232, 236, 250);
+  --text-strong: rgb(var(--inazuma-cream));
+  --text-muted: rgb(150, 165, 205);
+  --text-link: rgb(var(--inazuma-yellow));
+  --header-primary: rgb(var(--inazuma-cream));
+  --header-secondary: rgb(185, 196, 230);
+  --channels-default: rgb(160, 175, 215);
+  --channel-icon: rgb(160, 175, 215);
+  --interactive-normal: rgb(185, 196, 230);
+  --interactive-hover: rgb(var(--inazuma-cream));
+  --interactive-active: rgb(var(--inazuma-yellow));
+  --interactive-muted: rgb(80, 95, 140);
+
+  /* Couleur de marque (boutons, liens, toggles…) */
+  --brand-experiment: rgb(var(--inazuma-orange));
+  --brand-experiment-560: rgb(230, 120, 0);
+  --brand-experiment-600: rgb(205, 105, 0);
+  --brand-500: rgb(var(--inazuma-orange));
+  --brand-560: rgb(230, 120, 0);
+  --brand-600: rgb(205, 105, 0);
+  --button-filled-brand-background: rgb(var(--inazuma-orange));
+  --button-filled-brand-background-hover: rgb(230, 120, 0);
+  --button-filled-brand-background-active: rgb(205, 105, 0);
+  --button-filled-brand-text: rgb(var(--inazuma-navy));
+  --control-brand-foreground: rgb(var(--inazuma-yellow));
+  --control-brand-foreground-new: rgb(var(--inazuma-yellow));
+  --mention-foreground: rgb(var(--inazuma-yellow));
+  --mention-background: rgba(var(--inazuma-yellow), 0.16);
+
+  /* Scrollbars */
+  --scrollbar-thin-thumb: rgba(var(--inazuma-yellow), 0.45);
+  --scrollbar-thin-track: transparent;
+  --scrollbar-auto-thumb: rgba(var(--inazuma-yellow), 0.45);
+  --scrollbar-auto-track: rgba(var(--inazuma-navy), 0.3);
+  --scrollbar-auto-scrollbar-color-thumb: rgba(var(--inazuma-yellow), 0.45);
+  --scrollbar-auto-scrollbar-color-track: transparent;
+}
+
+/* ============================================================
+   FOND D'ÉCRAN
+   ============================================================ */
+#app-mount {
+  background:
+    linear-gradient(rgba(5, 10, 28, var(--inazuma-dim)), rgba(5, 10, 28, var(--inazuma-dim))),
+    var(--inazuma-bg) var(--inazuma-bg-position) / cover no-repeat fixed,
+    rgb(var(--inazuma-navy)) !important;
+}
+
+#app-mount [class*="bg_"],
+#app-mount [class^="app_"],
+#app-mount [class*="app_"] > [class*="layers_"],
+#app-mount [class*="layer_"],
+#app-mount [class*="container_"][class*="base_"] {
+  background: transparent !important;
+}
+
+/* Barre de titre de la fenêtre */
+[class*="titleBar_"],
+[class*="bar_"][class*="visual-refresh"] {
+  background: rgba(var(--inazuma-navy), 0.5) !important;
+}
+
+/* Flou derrière les panneaux latéraux */
+nav[class*="guilds_"],
+[class*="sidebar_"],
+[class*="membersWrap_"],
+[class*="panels_"] {
+  backdrop-filter: blur(var(--inazuma-blur));
+}
+
+/* ============================================================
+   DÉTAILS « ÉCLAIR »
+   ============================================================ */
+
+/* Liseré jaune → orange sous l'en-tête du salon */
+section[class*="title_"][class*="container_"],
+[class*="chat_"] > [class*="title_"] {
+  border-bottom: 2px solid transparent !important;
+  border-image: linear-gradient(90deg, rgb(var(--inazuma-yellow)), rgb(var(--inazuma-orange)) 50%, transparent) 1 !important;
+  box-shadow: none !important;
+}
+
+/* Salon sélectionné : bandeau orange à gauche */
+[class*="modeSelected_"] [class*="link_"],
+[class*="containerDefault_"] [class*="selected_"] [class*="link_"] {
+  box-shadow: inset 3px 0 0 rgb(var(--inazuma-orange));
+}
+
+/* Pastille des serveurs : barre jaune */
+[class*="pill_"] [class*="item_"] {
+  background-color: rgb(var(--inazuma-yellow)) !important;
+}
+
+/* Icônes de serveurs arrondies avec halo au survol */
+[class*="listItem_"] [class*="wrapper_"]:hover,
+[class*="listItem_"] [class*="selected_"] [class*="wrapper_"] {
+  filter: drop-shadow(0 0 6px rgba(var(--inazuma-yellow), 0.55));
+}
+
+/* Messages qui te mentionnent : bord orange */
+[class*="mentioned_"]::before {
+  background: rgb(var(--inazuma-orange)) !important;
+}
+
+/* Zone de saisie */
+[class*="channelTextArea_"] [class*="scrollableContainer_"],
+[class*="channelTextArea_"] > [class*="scrollableContainer_"] {
+  border: 1px solid rgba(var(--inazuma-yellow), 0.18);
+  border-radius: var(--inazuma-radius);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+[class*="channelTextArea_"]:focus-within [class*="scrollableContainer_"] {
+  border-color: rgba(var(--inazuma-yellow), 0.55);
+  box-shadow: 0 0 12px rgba(var(--inazuma-yellow), 0.2);
+}
+
+/* Boutons de marque : petit éclat */
+button[class*="colorBrand_"],
+button[class*="lookFilled_"][class*="colorBrand_"] {
+  background: linear-gradient(135deg, rgb(var(--inazuma-yellow)), rgb(var(--inazuma-orange))) !important;
+  color: rgb(var(--inazuma-navy)) !important;
+  font-weight: 700;
+}
+button[class*="colorBrand_"]:hover {
+  filter: brightness(1.08) drop-shadow(0 0 6px rgba(var(--inazuma-yellow), 0.5));
+}
+
+/* Popouts, menus, modales : bord fin jaune */
+[class*="menu_"],
+[class*="userPopoutOuter_"],
+[class*="popout_"],
+[class*="root_"][class*="modal_"],
+[class*="focusLock_"] [class*="root_"] {
+  border: 1px solid rgba(var(--inazuma-yellow), 0.2);
+}
+
+/* Éléments de menu au survol */
+[class*="menu_"] [class*="focused_"] {
+  background-color: rgb(var(--inazuma-orange)) !important;
+  color: rgb(var(--inazuma-navy)) !important;
+}
+
+/* Blocs de code */
+code.inline,
+[class*="markup_"] pre code {
+  background: rgba(5, 10, 30, 0.7) !important;
+  border: 1px solid rgba(var(--inazuma-yellow), 0.12) !important;
+}
+
+/* Citations */
+[class*="blockquoteDivider_"] {
+  background: rgb(var(--inazuma-yellow)) !important;
+}
+
+/* Sélection de texte */
+::selection {
+  background: rgba(var(--inazuma-yellow), 0.35);
+  color: #fff;
+}
