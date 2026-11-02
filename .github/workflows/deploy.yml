@@ -1,0 +1,23 @@
+name: Déploiement
+
+# À chaque push sur main, GitHub se connecte au serveur avec une clé restreinte :
+# le serveur ignore la commande envoyée et lance uniquement
+#   ~/infra/deploy/deploy.sh inazuma-discord-theme
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency: deploy
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Déployer sur le VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: deploy

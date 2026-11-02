@@ -1,0 +1,26 @@
+# Compose de démo : il lance un conteneur qui affiche un message puis attend.
+# Remplace le service "app" par ton programme (voir README.md), puis push :
+# le déploiement automatique reconstruit et relance tout seul.
+services:
+  app:
+    image: alpine:3.20
+    container_name: inazuma-discord-theme
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    command:
+      - sh
+      - -c
+      - |
+        echo "Inazuma Discord Theme tourne. Remplace ce service dans docker-compose.yml."
+        exec sleep infinity
+
+    # Exemple pour ton propre code (avec un Dockerfile à la racine) :
+    # build: .
+    # command: ...   (à retirer, c'est le CMD du Dockerfile qui s'applique)
+    #
+    # Pas de réseau "proxy" : le programme n'est pas exposé sur le web.
+    # S'il doit appeler un de tes sites par le réseau Docker, ajoute :
+    # networks: [proxy]
+    # (et la section networks.proxy.external: true en bas du fichier)
